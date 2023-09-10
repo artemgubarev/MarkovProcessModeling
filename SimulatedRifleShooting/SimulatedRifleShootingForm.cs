@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraCharts;
-using DevExpress.XtraGrid.Views.Grid;
+﻿using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -43,6 +42,16 @@ namespace SimulatedRifleShooting
             var initialProbabilities = ParseDataTable(_dataTableInitialProbabilities).ElementAt(0);
             var ticks = Simulate(transitionMatrix, initialProbabilities);
             DrawTransitionDiagram(ticks);
+        }
+        private void testDataSetButton_Click(object sender, EventArgs e)
+        {
+            string[] transitionMatrixRows
+                = Properties.Resources.transitionMatrix.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            FillDataTable(_dataTableTransitionMatrix, transitionMatrixRows);
+
+            string[] initialProbabilitiesRows =
+                 Properties.Resources.initialProbabilities.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            FillDataTable(_dataTableInitialProbabilities, initialProbabilitiesRows);
         }
 
         private int[] Simulate(IEnumerable<double[]> transitionMatrix, double[] initialProbabilities)
@@ -224,17 +233,6 @@ namespace SimulatedRifleShooting
                 data.Add(row);
             }
             return data;
-        }
-
-        private void testDataSetButton_Click(object sender, EventArgs e)
-        {
-            string[] transitionMatrixRows 
-                = Properties.Resources.transitionMatrix.Split(new string[] {"\r\n"}, StringSplitOptions.None);
-            FillDataTable(_dataTableTransitionMatrix, transitionMatrixRows);
-
-            string[] initialProbabilitiesRows =
-                 Properties.Resources.initialProbabilities.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-            FillDataTable(_dataTableInitialProbabilities, initialProbabilitiesRows);
         }
 
         private void FillDataTable(DataTable dataTable, string[] data)
