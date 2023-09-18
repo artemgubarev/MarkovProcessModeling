@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SimulatedRifleShootingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SimulatedRifleShootingControl.Designer.cs">
+      <DependentUpon>SimulatedRifleShootingControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="SimulatedRifleShootingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SimulatedRifleShootingControl.resx">
+      <DependentUpon>SimulatedRifleShootingControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SimulatedRifleShootingForm.resx">
       <DependentUpon>SimulatedRifleShootingForm.cs</DependentUpon>
     </EmbeddedResource>
